@@ -31,7 +31,9 @@
 #ifndef GODOTERRORHANDLER_REGISTER_TYPES_H
 #define GODOTERRORHANDLER_REGISTER_TYPES_H
 
-void register_godoterrorhandler_types();
-void unregister_godoterrorhandler_types();
+#include "modules/register_module_types.h"
+
+void initialize_godoterrorhandler_module(ModuleInitializationLevel p_level);
+void uninitialize_godoterrorhandler_module(ModuleInitializationLevel p_level);
 
 #endif // GODOTERRORHANDLER_REGISTER_TYPES_H

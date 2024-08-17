@@ -33,11 +33,21 @@
 
 #include "godoterrorhandler.h"
 
-void register_godoterrorhandler_types() {
+void initialize_godoterrorhandler_module(ModuleInitializationLevel p_level) {
+
+  if (p_level != MODULE_INITIALIZATION_LEVEL_SCENE) {
+    return;
+  }
+
   GDREGISTER_CLASS(GodotErrorHandler);
 	Engine::get_singleton()->add_singleton(Engine::Singleton("GodotErrorHandler", GodotErrorHandler::get_singleton()));
 }
 
-void unregister_godoterrorhandler_types() {
+void uninitialize_godoterrorhandler_module(ModuleInitializationLevel p_level) {
+
+  if (p_level != MODULE_INITIALIZATION_LEVEL_SCENE) {
+    return;
+  }
+
   GodotErrorHandler::reset_singleton();
 }

@@ -4,11 +4,11 @@ GodotErrorHandler *GodotErrorHandler::singleton = nullptr;
 
 GodotErrorHandler::GodotErrorHandler() {
 
+  singleton = this;
+
 	eh.errfunc = _err_handler;
 	eh.userdata = this;
 	add_error_handler(&eh);
-
-  singleton = this;
 }
 
 GodotErrorHandler::~GodotErrorHandler() {
@@ -59,7 +59,7 @@ void GodotErrorHandler::_err_handler(void *p_self, const char *p_func, const cha
 }
 
 void GodotErrorHandler::handle_error(Dictionary errorObject) {
-  emit_signal(SNAME("error_threw"), errorObject);
+  emit_signal("error_threw", errorObject);
 }
 
 
